@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".DivulgarVagaActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="@string/informacoes_sobre_a_vaga"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editDescricao"
+        android:layout_width="248dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/descricao"
+        android:inputType="textMultiLine" />
+
+
+    <EditText
+        android:id="@+id/editCargaHoraria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/carga_horaria_semanal"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editSalario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/salario"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/buttonDivulgar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:onClick="salvarVaga"
+        android:text="@string/divulgar" />
+</LinearLayout>

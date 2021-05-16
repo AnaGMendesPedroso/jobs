@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="90dp"
+        android:fontFamily="serif"
+        android:text="@string/bem_vindo_ao_jobs"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_empregador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="irParaCadastroVaga"
+        android:text="@string/quero_divulgar_uma_vaga_de_trabalho"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:backgroundTint="@color/buttons_jobs_primario" />
+
+    <Button
+        android:id="@+id/button_empregado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="irParaListagem"
+        android:text="@string/quero_encontrar_um_emprego"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:backgroundTint="@color/buttons_jobs_primario" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="serif"
+        android:text="@string/ja_possui_conta"/>
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="irParaLogin"
+        android:text="@string/entre_com_sua_conta"
+        app:backgroundTint="@color/buttons_jobs_secundario"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:text="@string/ainda_nao_cadastro"/>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/buttons_jobs_secundario"
+        android:text="@string/crie_sua_conta"
+        android:onClick="irParaCriarConta"/>
+</LinearLayout>

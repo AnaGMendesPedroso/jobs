@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Jobs</string>
+    <string name="title_activity_listagem_vagas">ListagemVagas</string>
+    <string name="carga_horaria_semanal">Carga horária semanal</string>
+    <string name="informacoes_sobre_a_vaga">Informações sobre a vaga</string>
+    <string name="descricao">Descrição</string>
+    <string name="salario">Salário</string>
+    <string name="divulgar">Divulgar</string>
+    <string name="entre_com_sua_conta">Entre com sua conta</string>
+    <string name="ja_possui_conta">Já possui conta?</string>
+    <string name="quero_encontrar_um_emprego">Quero encontrar uma vaga</string>
+    <string name="quero_divulgar_uma_vaga_de_trabalho">Quero divulgar uma vaga de trabalho</string>
+    <string name="bem_vindo_ao_jobs">Bem vindo ao Jobs</string>
+    <string name="Email">Email</string>
+    <string name="Senha">Senha</string>
+    <string name="crie_sua_conta">Crie sua conta</string>
+    <string name="logar">Logar</string>
+    <string name="ainda_nao_cadastro">Ainda não criou sua conta?</string>
+    <string name="confirme_sua_senha">Confirme sua senha</string>
+    <string name="pronto">Pronto</string>
+    <string name="cancelar">Cancelar</string>
+
+
+</resources>
