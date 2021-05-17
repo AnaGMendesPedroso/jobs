@@ -1,7 +1,6 @@
 package com.example.t1progmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.t1progmobile.entities.Pessoa;
-import com.example.t1progmobile.helpers.PessoaHelper;
+import com.example.t1progmobile.helpers.DBHelper;
 
 public class CriarContaActivity extends AppCompatActivity {
 
@@ -19,13 +18,13 @@ public class CriarContaActivity extends AppCompatActivity {
     private EditText etdTelefone;
     private EditText etdSenha;
     private EditText etdConfirmacaoSenha;
-    private PessoaHelper pessoaHelper = new PessoaHelper(this);
+    private DBHelper dbHelper = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
-        etdEmail = findViewById(R.id.editEmailLogin);
+        etdEmail = findViewById(R.id.editTextEmailAddress);
         etdNome = findViewById(R.id.editTextPersonName);
         etdCPF = findViewById(R.id.editCPF);
         etdTelefone = findViewById(R.id.editTextPhone);
@@ -34,36 +33,33 @@ public class CriarContaActivity extends AppCompatActivity {
     }
 
     public void criarConta(View view){
-        if(etdSenha.getText().equals(etdConfirmacaoSenha.getText())){
 
-            if(pessoaHelper.buscarEmailCadastrado(etdEmail.getText().toString())){
-                Toast toastErro = Toast.makeText(this,
-                        "Email já cadastrado. Tente logar ao invés de se cadastrar", Toast.LENGTH_SHORT);
-                toastErro.show();
+        String nome = etdNome.getText().toString();
+        String cpf = etdCPF.getText().toString();
+        String email = etdEmail.getText().toString();
+        String telefone = etdTelefone.getText().toString();
+        String senha = etdSenha.getText().toString();
+        String confSenha = etdConfirmacaoSenha.getText().toString();
 
-            } else {
-                Pessoa pessoa = new Pessoa(
-                        etdNome.getText().toString(),
-                        etdCPF.getText().toString(),
-                        etdEmail.getText().toString(),
-                        etdTelefone.getText().toString(),
-                        Integer.parseInt(etdSenha.getText().toString()));
-                pessoaHelper.cadastrarPessoa(pessoa);
-                Toast toastSucesso = Toast.makeText(this,
-                        "Usuário criado com sucesso", Toast.LENGTH_SHORT);
-                toastSucesso.show();
+        if(!senha.equals(confSenha)){
+            Toast toastErroConfirmacao = Toast.makeText (CriarContaActivity.this, "Senhas diferem entre si. Tente novamente.", Toast.LENGTH_SHORT);
+            toastErroConfirmacao.show();
+            etdSenha.setText("");
+            etdConfirmacaoSenha.setText("");
+        }else{
+            boolean verficaSeEmailJaEstaCadastrado = dbHelper.buscarEmailCadastrado(email);
 
-                Intent intent = new Intent(this, ListagemVagasActivity.class);
-                startActivity(intent);
+            if(verficaSeEmailJaEstaCadastrado){
+                Toast toastErroEmail = Toast.makeText (CriarContaActivity.this, "Email já cadastrado. Tente novamente.", Toast.LENGTH_SHORT);
+                toastErroEmail.show();
+            }else {
+                Pessoa pessoa = new Pessoa(nome, cpf, email, telefone, Integer.parseInt(senha));
+                dbHelper.cadastrarPessoa(pessoa);
+                Toast toastSucessoCadastro = Toast.makeText(CriarContaActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT);
+                toastSucessoCadastro.show();
+                limparCampos();
             }
-
-        } else {
-            Toast toastErro = Toast.makeText(this,
-                    "Senhas não conferem, tente novamente", Toast.LENGTH_SHORT);
-            toastErro.show();
-            limparCamposSenha();
         }
-        limparCampos();
     }
 
     private void limparCampos() {
@@ -75,13 +71,7 @@ public class CriarContaActivity extends AppCompatActivity {
         etdConfirmacaoSenha.setText("");
     }
 
-
-    private void limparCamposSenha() {
-        etdSenha.setText("");
-        etdConfirmacaoSenha.setText("");
-    }
-
     public void cancelar(View view){
-        this.finish();
+        finish();
     }
 }

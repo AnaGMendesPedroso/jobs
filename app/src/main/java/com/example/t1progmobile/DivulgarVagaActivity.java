@@ -8,11 +8,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.t1progmobile.entities.Vaga;
-import com.example.t1progmobile.helpers.VagaHelper;
+import com.example.t1progmobile.helpers.DBHelper;
 
 public class DivulgarVagaActivity extends AppCompatActivity {
 
-    private VagaHelper vagaHelper = new VagaHelper(this);
+    private DBHelper DBHelper = new DBHelper(this);
     private EditText editDescricao;
     private EditText editValorSalario;
     private EditText editCargaHoraria;
@@ -41,7 +41,7 @@ public class DivulgarVagaActivity extends AppCompatActivity {
         vagaEmprego.setHorasSemana(cargaHorariaVaga);
         vagaEmprego.setValor(salarioVaga);
 
-        vagaHelper.criarEmprego(vagaEmprego);
+        DBHelper.criarEmprego(vagaEmprego);
 
         Toast toastSucesso = Toast.makeText(DivulgarVagaActivity.this,
                 "Vaga cadastrada com sucesso!", Toast.LENGTH_SHORT);

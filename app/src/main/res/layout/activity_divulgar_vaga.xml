@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/salario"
-        android:inputType="text" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/buttonDivulgar"

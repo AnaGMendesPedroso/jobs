@@ -9,13 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.t1progmobile.entities.Pessoa;
-import com.example.t1progmobile.helpers.PessoaHelper;
+import com.example.t1progmobile.helpers.DBHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmailLogin;
     private EditText editTextSenhaLogin;
-    private PessoaHelper pessoaHelper = new PessoaHelper(this);
+    private DBHelper DBHelper = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logar(View view){
-        Pessoa pessoa = pessoaHelper.buscarPessoaCadastrada(editTextEmailLogin.getText().toString(), Integer.parseInt(editTextSenhaLogin.getText().toString()));
+        Pessoa pessoa = DBHelper.buscarPessoaCadastrada(editTextEmailLogin.getText().toString(), Integer.parseInt(editTextSenhaLogin.getText().toString()));
 
         if(pessoa.getNome() == null){
             Toast toastErro = Toast.makeText(this,
