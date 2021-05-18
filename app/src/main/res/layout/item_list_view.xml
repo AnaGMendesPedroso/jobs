@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ListagemVagasActivity">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginRight="10dp"
         android:id="@+id/imagemItem"></ImageView>
 
     <LinearLayout
@@ -25,6 +28,13 @@
             android:textStyle="bold"
             android:layout_margin="5dp"
             android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/idVaga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id vaga"
+            android:textColor="@color/white"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,7 +82,20 @@
                 android:textSize="15dp"/>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/tenhoInteresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/tenho_interesse"/>
 
+        <Button
+            android:id="@+id/apagarVaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/buttons_jobs_secundario"
+            android:text="Apagar vaga"/>
 
 
     </LinearLayout>

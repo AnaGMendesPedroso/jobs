@@ -11,7 +11,8 @@ public class Vaga {
 
     public Vaga(){}
 
-    public Vaga(String descricao, int horasSemana, double valor){
+    public Vaga(int id , String descricao, int horasSemana, double valor){
+        this.vagaId = id;
         this.descricao = descricao;
         this.horasSemana = horasSemana;
         this.valor = valor;

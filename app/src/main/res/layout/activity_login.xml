@@ -52,4 +52,12 @@
         app:backgroundTint="@color/buttons_jobs_secundario"
         android:text="@string/crie_sua_conta"
         android:onClick="irParaCriarConta"/>
+
+    <Button
+        android:id="@+id/cancelarDivulgacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancelar"
+        android:onClick="cancelar"/>
+
 </LinearLayout>

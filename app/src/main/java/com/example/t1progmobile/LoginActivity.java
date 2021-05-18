@@ -43,4 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CriarContaActivity.class);
         startActivity(intent);
     }
+
+    public void cancelar(View view) {
+        finish();
+    }
 }

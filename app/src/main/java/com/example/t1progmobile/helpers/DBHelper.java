@@ -35,11 +35,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_CREATE_VAGA =
             "CREATE TABLE " + VAGA_TABLE_NAME + " ("
-            + COLUMM_VAGA_ID + " integer primary key autoincrement,"
-            + COLUMM_DESCRICAO + " text not null,"
-            + COLUMM_HORASSEMANA + " integer not null,"
-            + COLUMM_REMUNERACAO + " real not null"
-            + ")";
+                    + COLUMM_VAGA_ID + " integer primary key autoincrement,"
+                    + COLUMM_DESCRICAO + " text not null,"
+                    + COLUMM_HORASSEMANA + " integer not null,"
+                    + COLUMM_REMUNERACAO + " real not null"
+                    + ")";
 
 
     private static final String TABLE_CREATE_PESSOA =
@@ -51,13 +51,13 @@ public class DBHelper extends SQLiteOpenHelper {
                     + COLUMM_EMAIL + " text UNIQUE not null,"
                     + COLUMM_TELEFONE + " text not null,"
                     + COLUMM_SENHA + " integer not null,"
-                    + "FOREIGN KEY(" + COLUMM_VAGA_ID +") REFERENCES " + VAGA_TABLE_NAME + " (" + COLUMM_CANDIDATO_VAGA_ID + ")"
+                    + "FOREIGN KEY(" + COLUMM_VAGA_ID + ") REFERENCES " + VAGA_TABLE_NAME + " (" + COLUMM_CANDIDATO_VAGA_ID + ")"
                     + ")";
 
     SQLiteDatabase db;
 
     public DBHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null , DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class DBHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public void criarEmprego(Vaga vaga){
+    public void criarEmprego(Vaga vaga) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMM_DESCRICAO, vaga.getDescricao());
@@ -85,33 +85,35 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<Vaga> consultarTodasVagas(){
+    public ArrayList<Vaga> consultarTodasVagas() {
         db = this.getReadableDatabase();
         String query = "SELECT "
+                + COLUMM_VAGA_ID + ","
                 + COLUMM_DESCRICAO + ","
                 + COLUMM_HORASSEMANA + ","
                 + COLUMM_REMUNERACAO
-                + " FROM "+ VAGA_TABLE_NAME;
+                + " FROM " + VAGA_TABLE_NAME;
 
         Cursor cursor = db.rawQuery(query, null);
 
         ArrayList<Vaga> vagasCadastradas = new ArrayList<>();
 
-        if( cursor.moveToFirst() ){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
 
-                String auxDescricaoCursor = cursor.getString(0);
-                int auxHorasCursor = Integer.parseInt(cursor.getString(1));
-                double auxRemuneracaoCursor = Double.parseDouble(cursor.getString(2));
-                Vaga vagaAux = new Vaga(auxDescricaoCursor, auxHorasCursor, auxRemuneracaoCursor);
+                int vagaId = cursor.getInt(0);
+                String auxDescricaoCursor = cursor.getString(1);
+                int auxHorasCursor = cursor.getInt(2);
+                double auxRemuneracaoCursor = cursor.getDouble(3);
+                Vaga vagaAux = new Vaga(vagaId, auxDescricaoCursor, auxHorasCursor, auxRemuneracaoCursor);
                 vagasCadastradas.add(vagaAux);
 
             } while (cursor.moveToNext());
         }
-         return vagasCadastradas;
+        return vagasCadastradas;
     }
 
-    public int buscarPessoaIDPorEmail(String email){
+    public int buscarPessoaIDPorEmail(String email) {
 
         db = this.getReadableDatabase();
 
@@ -125,14 +127,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         int id = -1;
 
-        if( cursor.moveToFirst() ){
+        if (cursor.moveToFirst()) {
             id = cursor.getInt(0);
         }
         return id;
 
     }
 
-    public int buscarVagaIDPorDescricao(String titulo){
+    public int buscarVagaIDPorDescricao(String titulo) {
 
         db = this.getReadableDatabase();
 
@@ -146,27 +148,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
         int id = -1;
 
-        if( cursor.moveToFirst() ){
+        if (cursor.moveToFirst()) {
             id = cursor.getInt(0);
         }
         return id;
 
     }
 
-    public String vincularCandidatoVaga(int vagaID, int pessoaID){
-        db = this.getWritableDatabase();
-        String queryVagasDoCandidato = "SELECT " + COLUMM_CANDIDATO_VAGA_ID + " FROM " + TABLE_CREATE_PESSOA + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoaID;
+    public String vincularCandidatoVaga(int vagaID, int pessoaID) {
+        db = this.getReadableDatabase();
+        String queryVagasDoCandidato = "SELECT " + COLUMM_CANDIDATO_VAGA_ID + " FROM " + PESSOA_TABLE_NAME + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoaID;
         Cursor cursor = db.rawQuery(queryVagasDoCandidato, null);
         String resultado = "";
-        if (cursor.moveToFirst()){
-            resultado = "Já vinculado a uma vaga";
-        }else{
-            String updateVinculoPessoaVaga = "UPDATE "+ TABLE_CREATE_PESSOA + " SET " + COLUMM_CANDIDATO_VAGA_ID + " = " + vagaID + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoaID;
+        if (cursor.moveToFirst()) {
+            if (cursor.getInt(0) != 0) {
+                resultado = "Já vinculado a uma vaga";
+            } else {
+                db = this.getWritableDatabase();
+                String updateVinculoPessoaVaga = "UPDATE " + PESSOA_TABLE_NAME + " SET " + COLUMM_CANDIDATO_VAGA_ID + " = " + vagaID + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoaID;
+                db.execSQL(updateVinculoPessoaVaga);
+                resultado = "Vinculado com sucesso!";
+            }
         }
         return resultado;
     }
 
-    public void cadastrarPessoa(Pessoa pessoa){
+    public void cadastrarPessoa(Pessoa pessoa) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMM_NOME, pessoa.getNome());
@@ -180,30 +187,30 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean buscarEmailCadastrado(String email){
+    public boolean buscarEmailCadastrado(String email) {
         db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + PESSOA_TABLE_NAME + " WHERE "+ COLUMM_EMAIL+ " LIKE '" + email + "'";
+        String query = "SELECT * FROM " + PESSOA_TABLE_NAME + " WHERE " + COLUMM_EMAIL + " LIKE '" + email + "'";
 
         Cursor cursor = db.rawQuery(query, null);
 
         boolean jaCadastrado = false;
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             jaCadastrado = true;
         }
 
-        return  jaCadastrado;
+        return jaCadastrado;
     }
 
-    public Pessoa buscarPessoaCadastrada(String email, int senha){
+    public Pessoa buscarPessoaCadastrada(String email, int senha) {
         db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + PESSOA_TABLE_NAME + " WHERE "+ COLUMM_EMAIL+ " LIKE '" + email + "' AND " + COLUMM_SENHA + " = " + senha;
+        String query = "SELECT * FROM " + PESSOA_TABLE_NAME + " WHERE " + COLUMM_EMAIL + " LIKE '" + email + "' AND " + COLUMM_SENHA + " = " + senha;
 
         Cursor cursor = db.rawQuery(query, null);
 
         Pessoa pessoa = new Pessoa();
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             String nome = cursor.getString(2);
             String cpf = cursor.getString(3);
             String emailDB = cursor.getString(4);
@@ -218,5 +225,24 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return pessoa;
+    }
+
+    public boolean apagarVaga(int vagaId) {
+        db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMM_CANDIDATO_VAGA_ID + " FROM " + PESSOA_TABLE_NAME + " WHERE " + COLUMM_VAGA_ID + " = " + vagaId;
+        Cursor cursor = db.rawQuery(query, null);
+
+        boolean resultado = false;
+
+        if (cursor.moveToFirst()) {
+            if (cursor.getInt(0) != 0) {
+                resultado = false;
+            }
+        } else {
+            String deleteVaga = "DELETE FROM " + VAGA_TABLE_NAME + " WHERE " + COLUMM_VAGA_ID + " = " + vagaId;
+            db.execSQL(deleteVaga);
+            resultado = true;
+        }
+        return resultado;
     }
 }

@@ -48,4 +48,8 @@ public class DivulgarVagaActivity extends AppCompatActivity {
         toastSucesso.show();
         limparCampos();
     }
+
+    public void cancelar(View view) {
+       finish();
+    }
 }

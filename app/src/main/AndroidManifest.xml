@@ -4,13 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:background="@color/white"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.T1Progmobile">
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".CandidatarVagaActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".DivulgarVagaActivity" />
         <activity android:name=".CriarContaActivity" />
         <activity android:name=".ListagemVagasActivity" />

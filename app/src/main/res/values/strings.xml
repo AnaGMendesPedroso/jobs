@@ -19,6 +19,9 @@
     <string name="confirme_sua_senha">Confirme sua senha</string>
     <string name="pronto">Pronto</string>
     <string name="cancelar">Cancelar</string>
-
-
+    <string name="tenho_interesse">Tenho interesse</string>
+    <string name="candidatar_se">Candidatar-se</string>
+    <string name="jobs_aqui_voc_encontra_o_emprego_dos_sonhos">Jobs: aqui você encontra o emprego dos sonhos</string>
+    <string name="ainda_n_o_temos_vagas_cadastradas">Ainda não temos vagas cadastradas</string>
+    <string name="atualizar_vagas">Atualizar vagas</string>
 </resources>
