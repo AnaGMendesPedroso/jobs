@@ -1,62 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/jobs_secundario"
     tools:context=".DivulgarVagaActivity">
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="49dp"
         android:gravity="center"
         android:text="@string/informacoes_sobre_a_vaga"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
 
     <EditText
         android:id="@+id/editDescricao"
         android:layout_width="248dp"
         android:layout_height="101dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="61dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/descricao"
-        android:inputType="textMultiLine" />
-
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editCargaHoraria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/carga_horaria_semanal"
-        android:inputType="number" />
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSalario" />
 
     <EditText
         android:id="@+id/editSalario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/salario"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDescricao" />
 
     <Button
         android:id="@+id/buttonDivulgar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginTop="67dp"
         android:onClick="salvarVaga"
-        android:text="@string/divulgar" />
+        android:text="@string/divulgar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCargaHoraria" />
 
     <Button
         android:id="@+id/cancelarDivulgacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginLeft="157dp"
+        android:layout_marginTop="40dp"
+        android:onClick="cancelar"
         android:text="@string/cancelar"
-        android:onClick="cancelar"/>
-</LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDivulgar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

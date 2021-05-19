@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="buttons_jobs_primario">#4A4A4A</color>
-    <color name="buttons_jobs_secundario">#616161</color>
+    <color name="jobs_primario">#4A4A4A</color>
+    <color name="jobs_secundario">#616161</color>
+    <color name="jobs_terceiro">#879597</color>
 </resources>

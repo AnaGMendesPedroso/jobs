@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/jobs_secundario"
     android:gravity="center"
     tools:context=".MainActivity">
 
-
+    <include layout="@layout/toolbar" />
 
     <TextView
         android:id="@+id/textView3"
@@ -29,7 +30,7 @@
         android:onClick="irParaCadastroVaga"
         android:text="@string/quero_divulgar_uma_vaga_de_trabalho"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:backgroundTint="@color/buttons_jobs_primario" />
+        app:backgroundTint="@color/jobs_primario" />
 
     <Button
         android:id="@+id/button_empregado"
@@ -40,7 +41,7 @@
         android:onClick="irParaListagem"
         android:text="@string/quero_encontrar_um_emprego"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:backgroundTint="@color/buttons_jobs_primario" />
+        app:backgroundTint="@color/jobs_primario" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,6 +50,7 @@
         android:layout_marginTop="150dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="serif"
+        android:textColor="@color/jobs_primario"
         android:text="@string/ja_possui_conta"/>
 
 
@@ -58,7 +60,7 @@
         android:layout_height="wrap_content"
         android:onClick="irParaLogin"
         android:text="@string/entre_com_sua_conta"
-        app:backgroundTint="@color/buttons_jobs_secundario"/>
+        app:backgroundTint="@color/jobs_terceiro"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -66,12 +68,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="serif"
+        android:textColor="@color/jobs_primario"
         android:text="@string/ainda_nao_cadastro"/>
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/buttons_jobs_secundario"
+        app:backgroundTint="@color/jobs_terceiro"
         android:text="@string/crie_sua_conta"
         android:onClick="irParaCriarConta"/>
 </LinearLayout>

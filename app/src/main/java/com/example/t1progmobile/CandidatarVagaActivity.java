@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,8 @@ import com.example.t1progmobile.helpers.DBHelper;
 public class CandidatarVagaActivity extends AppCompatActivity {
 
     private TextView emailCandidato;
+    private ImageView accountToolBar;
+    private ImageView criarVagaToolbar;
     private DBHelper dbHelper = new DBHelper(this);
 
     @Override
@@ -20,6 +23,24 @@ public class CandidatarVagaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidatar_vaga);
         emailCandidato = findViewById(R.id.editEmailCandidato);
+        accountToolBar = findViewById(R.id.iconeContaToolbar);
+        criarVagaToolbar = findViewById(R.id.criarVagaToobar);
+
+        criarVagaToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CandidatarVagaActivity.this, DivulgarVagaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        accountToolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CandidatarVagaActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void vincularCandidatoVaga(View view){

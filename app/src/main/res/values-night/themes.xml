@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.T1Progmobile" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.T1Progmobile" parent="Theme.AppCompat.NoActionBar">
         <item name="background">@color/white</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/buttons_jobs_primario</item>
-        <item name="colorPrimaryVariant">@color/buttons_jobs_secundario</item>
+        <item name="colorPrimary">@color/jobs_primario</item>
+        <item name="colorPrimaryVariant">@color/jobs_secundario</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/jobs_secundario"
+    tools:context=".AlterarVaga">
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="49dp"
+        android:gravity="center"
+        android:text="@string/atualizar_vaga"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
+
+    <EditText
+        android:id="@+id/editDescricaoAtualizarVaga"
+        android:layout_width="248dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="61dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/descricao"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editCargaHorariaAtualizarVaga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/carga_horaria_semanal"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSalarioAtualizarVaga" />
+
+    <EditText
+        android:id="@+id/editSalarioAtualizarVaga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="@string/salario"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDescricaoAtualizarVaga" />
+
+    <Button
+        android:id="@+id/buttonAtualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="72dp"
+        android:onClick="atualizarVaga"
+        android:text="@string/atualizar_vaga"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCargaHorariaAtualizarVaga" />
+
+    <Button
+        android:id="@+id/cancelarAtualizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="40dp"
+        android:onClick="cancelar"
+        android:text="@string/cancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAtualizar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

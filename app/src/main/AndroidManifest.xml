@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.T1Progmobile">
-        <activity android:name=".CandidatarVagaActivity"></activity>
+        <activity android:name=".AlterarVaga"></activity>
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".CandidatarVagaActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".DivulgarVagaActivity" />
         <activity android:name=".CriarContaActivity" />

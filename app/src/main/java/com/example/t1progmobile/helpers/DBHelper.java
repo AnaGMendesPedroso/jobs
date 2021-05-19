@@ -134,27 +134,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int buscarVagaIDPorDescricao(String titulo) {
-
-        db = this.getReadableDatabase();
-
-        String query = "SELECT "
-                + COLUMM_VAGA_ID
-                + " FROM " + VAGA_TABLE_NAME
-                + " WHERE " + COLUMM_DESCRICAO
-                + " LIKE '" + titulo + "'";
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        int id = -1;
-
-        if (cursor.moveToFirst()) {
-            id = cursor.getInt(0);
-        }
-        return id;
-
-    }
-
     public String vincularCandidatoVaga(int vagaID, int pessoaID) {
         db = this.getReadableDatabase();
         String queryVagasDoCandidato = "SELECT " + COLUMM_CANDIDATO_VAGA_ID + " FROM " + PESSOA_TABLE_NAME + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoaID;
@@ -211,12 +190,14 @@ public class DBHelper extends SQLiteOpenHelper {
         Pessoa pessoa = new Pessoa();
 
         if (cursor.moveToFirst()) {
+            String id = cursor.getString(0);
             String nome = cursor.getString(2);
             String cpf = cursor.getString(3);
             String emailDB = cursor.getString(4);
             String telefone = cursor.getString(5);
             int senhaDB = cursor.getInt(6);
 
+            pessoa.setId(Integer.parseInt(id));
             pessoa.setNome(nome);
             pessoa.setCpf(cpf);
             pessoa.setEmail(emailDB);
@@ -244,5 +225,26 @@ public class DBHelper extends SQLiteOpenHelper {
             resultado = true;
         }
         return resultado;
+    }
+
+    public void atualizarPerfil(Pessoa pessoa) {
+        db = this.getWritableDatabase();
+        String updateVinculoPessoaVaga = "UPDATE " + PESSOA_TABLE_NAME
+                + " SET " + COLUMM_NOME + " = '" + pessoa.getNome() + "',"
+                + COLUMM_CPF + " = '" + pessoa.getCpf() + "',"
+                + COLUMM_TELEFONE + " = '" + pessoa.getTelefone() + "',"
+                + COLUMM_SENHA + " = " + pessoa.getSenha()
+                + " WHERE " + COLUMM_PESSOA_ID + " = " + pessoa.getPessoaId();
+        db.execSQL(updateVinculoPessoaVaga);
+    }
+
+    public void atualizarVaga(Vaga vaga){
+        db = this.getWritableDatabase();
+        String updateVaga = "UPDATE " + VAGA_TABLE_NAME
+                + " SET " + COLUMM_DESCRICAO + " = '" + vaga.getDescricao() + "',"
+                + COLUMM_HORASSEMANA + " = " + vaga.getHorasSemana() + ","
+                + COLUMM_REMUNERACAO + " = " + vaga.getValor()
+                + " WHERE " + COLUMM_VAGA_ID + " = " + vaga.getVagaId();
+        db.execSQL(updateVaga);
     }
 }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.t1progmobile.AlterarVaga;
 import com.example.t1progmobile.CandidatarVagaActivity;
 import com.example.t1progmobile.ListagemVagasActivity;
 import com.example.t1progmobile.R;
@@ -65,12 +66,24 @@ public class Adaptador extends BaseAdapter {
         idVaga.setText(String.valueOf(vagasCadastradas.get(position).getVagaId()));
         remuneracaVaga.setText(String.valueOf(vagasCadastradas.get(position).getValor()));
         cargaHorariaVaga.setText(String.valueOf(vagasCadastradas.get(position).getHorasSemana()));
+
         Button botaoCandidatar = (Button) itemLista.findViewById(R.id.tenhoInteresse);
         Button botaoApagarVaga = (Button) itemLista.findViewById(R.id.apagarVaga);
+        Button botaoAlterarVaga = (Button) itemLista.findViewById(R.id.alterarVaga);
 
         botaoCandidatar.setOnClickListener(view -> {
             Intent intent = new Intent(context, CandidatarVagaActivity.class);
             intent.putExtra("idVaga", idVaga.getText().toString());
+            context.startActivity(intent);
+        });
+
+        botaoAlterarVaga.setOnClickListener(view -> {
+            Intent intent = new Intent(context, AlterarVaga.class);
+            intent.putExtra("vagaID", String.valueOf(vagasCadastradas.get(position).getVagaId()));
+            intent.putExtra("vagaDescricao", vagasCadastradas.get(position).getDescricao());
+            intent.putExtra("vagaHorasSemana", String.valueOf(vagasCadastradas.get(position).getHorasSemana()));
+            intent.putExtra("vagaRemuneracao", String.valueOf(vagasCadastradas.get(position).getValor()));
+
             context.startActivity(intent);
         });
 

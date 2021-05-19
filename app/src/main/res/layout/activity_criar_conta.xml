@@ -1,82 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@color/jobs_secundario"
     tools:context=".CriarContaActivity">
 
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="46dp"
         android:text="Informe seus dados"
-        android:layout_marginBottom="25dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
 
     <EditText
         android:id="@+id/editTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="9dp"
         android:ems="10"
         android:hint="Nome"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
 
     <EditText
         android:id="@+id/editCPF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="CPF"
-        android:inputType="number"/>
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPersonName" />
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Telefone"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCPF" />
 
     <EditText
         android:id="@+id/editTextNumberPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
+        android:hint="@string/Senha"
         android:inputType="numberPassword"
-        android:hint="@string/Senha"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
         android:id="@+id/editTextNumberPasswordConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="@string/confirme_sua_senha"
         android:inputType="numberPassword"
-        android:hint="@string/confirme_sua_senha"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword" />
+
     <Button
         android:id="@+id/buttonPronto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginTop="48dp"
         android:onClick="criarConta"
-        android:text="@string/pronto" />
+        android:text="@string/pronto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPasswordConfirm" />
+
     <Button
         android:id="@+id/cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginLeft="157dp"
+        android:layout_marginTop="49dp"
         android:onClick="cancelar"
-        android:text="@string/cancelar" />
+        android:text="@string/cancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPronto" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.t1progmobile.entities.Pessoa;
@@ -15,6 +16,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmailLogin;
     private EditText editTextSenhaLogin;
+    private ImageView accountToolBar;
+    private ImageView criarVagaToolbar;
+
     private DBHelper DBHelper = new DBHelper(this);
 
     @Override
@@ -23,6 +27,25 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         editTextEmailLogin = findViewById(R.id.editEmailLogin);
         editTextSenhaLogin = findViewById(R.id.editSenhaLogin);
+
+        accountToolBar = findViewById(R.id.iconeContaToolbar);
+        criarVagaToolbar = findViewById(R.id.criarVagaToobar);
+
+        criarVagaToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, DivulgarVagaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        accountToolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void logar(View view){
@@ -33,7 +56,12 @@ public class LoginActivity extends AppCompatActivity {
                     "Usuário não encontrado, tente novamente", Toast.LENGTH_SHORT);
             toastErro.show();
         } else {
-            Intent intent = new Intent(this, ListagemVagasActivity.class);
+            Intent intent = new Intent(this, PerfilActivity.class);
+            intent.putExtra("pessoaNome", pessoa.getNome());
+            intent.putExtra("pessoaCPF", pessoa.getCpf());
+            intent.putExtra("pessoaEmail", pessoa.getEmail());
+            intent.putExtra("pessoaTelefone", pessoa.getTelefone());
+            intent.putExtra("pessoaId", String.valueOf(pessoa.getPessoaId()));
             startActivity(intent);
         }
 

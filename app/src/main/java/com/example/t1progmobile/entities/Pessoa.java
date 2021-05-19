@@ -15,6 +15,15 @@ public class Pessoa {
         this.senha = senha;
     }
 
+    public Pessoa(int pessoaId, String nome, String cpf, String email, String telefone, int senha) {
+        this.pessoaId = pessoaId;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
+
     public int getPessoaId() {
         return pessoaId;
     }
@@ -62,5 +71,9 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public void setId(int id) {
+        this.pessoaId = id;
     }
 }
